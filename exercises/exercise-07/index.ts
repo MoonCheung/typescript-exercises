@@ -41,13 +41,11 @@ interface Admin {
   role: string;
 }
 
-interface PowerUser {
-  type: 'powerUser';
-  name: string;
-  age: number;
-  role: string;
-  occupation: string;
-}
+// 我是Typescript菜鸟
+// (1) 创建新的交集类型: User & Admin
+// (2) 使用Omit删除'type'属性
+// (3) 与包含自定义“类型”属性的类型相交
+type PowerUser = Omit<User & Admin, 'type'> & { type: 'powerUser' };
 
 type Person = User | Admin | PowerUser;
 
